@@ -30,7 +30,7 @@ class String
     self.each_char.with_index do |char, index|
       result += char.ord * (index + 1 * 11)
     end
-    result
+    result.hash
   end
 
 end
