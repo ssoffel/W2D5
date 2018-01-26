@@ -44,7 +44,7 @@ end
 
 class IntSet
   attr_accessor :store
-  attr_reader :num_buckets
+  attr_accessor :num_buckets
 
   def initialize(num_buckets = 20)
     @store = Array.new(num_buckets) { Array.new }
@@ -120,9 +120,9 @@ class ResizingIntSet
 
   def resize!
     @num_buckets = @num_buckets * 2
-    temp = Array.new(num_buckets) { Array.new }
+    temp = Array.new(@num_buckets) { Array.new }
     @store.flatten.each do |el|
-      temp[el % num_buckets] << el
+      temp[el % @num_buckets] << el
     end
     @store = temp
     end
